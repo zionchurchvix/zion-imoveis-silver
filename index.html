@@ -1,0 +1,190 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Imóveis Zion Silver</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: ficha de corretor — faixa de critérios do Silver, tabela-resumo, depois uma ficha por imóvel com fotos à esquerda */
+:root{
+  --bg:#f3f2ee; --card:#fbfaf7; --fg:#1d2321; --muted:#5f6763; --line:#dcd9d1;
+  --accent:#005246; --accent-soft:#dbe9e5; --wood:#a07a52;
+  --ok:#2f7a4f; --warn:#a8691b; --bad:#a23b3b;
+  --display:"Sora",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151917; --card:#1d2220; --fg:#e8e6e0; --muted:#a3aaa6; --line:#323a37;
+  --accent:#4fb3a1; --accent-soft:#1f3a35; --wood:#c9a27a;
+  --ok:#6cc08f; --warn:#e0a85a; --bad:#e07a7a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151917; --card:#1d2220; --fg:#e8e6e0; --muted:#a3aaa6; --line:#323a37;
+  --accent:#4fb3a1; --accent-soft:#1f3a35; --wood:#c9a27a;
+  --ok:#6cc08f; --warn:#e0a85a; --bad:#e07a7a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,5vw,40px);font-weight:700}
+h2{font-size:20px;font-weight:600}
+h3{font-size:18px;font-weight:600}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.lead{color:var(--muted);max-width:68ch;margin:8px 0 0}
+header{display:grid;gap:6px}
+.crit{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.crit div{background:var(--card);padding:14px 16px}
+.crit b{display:block;font-family:var(--display);font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}
+.crit span{font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td a{color:var(--accent);font-weight:600;text-decoration:none}
+.list{display:grid;gap:20px}
+.item{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.item.top{border-color:var(--accent)}
+@media (max-width:760px){.item{grid-template-columns:1fr}}
+.gal{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:2px;background:var(--line)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;cursor:zoom-in}
+.gal img:first-child{grid-column:1/3;aspect-ratio:16/10}
+.nofoto{grid-column:1/3;display:grid;place-items:center;aspect-ratio:16/10;color:var(--muted);font-size:14px;background:var(--bg)}
+.info{padding:20px 22px;display:grid;gap:12px;align-content:start;min-width:0}
+.head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.loc{font-size:13px;color:var(--muted)}
+.nota{flex:none;font-family:var(--display);font-weight:700;font-size:14px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.n4{background:var(--accent);color:var(--card)}
+.n3{background:var(--accent-soft);color:var(--accent)}
+.n2{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px 16px;margin:0}
+.facts div{min-width:0}
+.facts dt{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.pend{color:var(--warn)}
+.novo{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;background:var(--wood);color:var(--card);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.yes{color:var(--ok)}
+.why{margin:0;padding-left:12px;border-left:3px solid var(--wood);color:var(--fg)}
+.small{font-size:14px;color:var(--muted);margin:0}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-block;padding:8px 14px;border-radius:8px;background:var(--accent);color:var(--card);text-decoration:none;font-weight:600;font-size:14px}
+.btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn:focus-visible,summary:focus-visible,.gal img:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section{display:grid;gap:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+summary{cursor:pointer;font-weight:600;font-family:var(--display)}
+details ul{margin:12px 0 0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+.note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+#zoom{position:fixed;inset:0;background:rgba(0,0,0,.85);display:grid;place-items:center;z-index:20;padding:20px;cursor:zoom-out}
+#zoom img{max-height:90vh;max-width:100%;border-radius:6px}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Zion Vitória · Busca de imóvel · Relatório de 17/11/2026</div>
+    <h1>Imóveis em Vitória para o campus Silver</h1>
+    <p class="lead">Galpões, lojões e prédios no município de Vitória que atendem ou chegam perto das diretrizes do plano Silver, com preferência para imóveis prontos, sem obra estrutural. Ordenados da melhor para a pior aderência.</p>
+  </header>
+
+  <section>
+    <h2>O que o Silver pede (Diretrizes Visuais Zion Global)</h2>
+    <div class="crit">
+      <div><b>300</b><span>cadeiras no templo</span></div>
+      <div><b>450 m²</b><span>templo em vão livre</span></div>
+      <div><b>6 m</b><span>pé-direito mínimo</span></div>
+      <div><b>12 × 5 m</b><span>palco, altura 0,9 m</span></div>
+      <div><b>≈1.200 m²</b><span>área total do campus</span></div>
+      <div><b>6 + 2</b><span>vasos sanitários + 2 PNE</span></div>
+    </div>
+    <p class="small">Além do templo: auditório auxiliar 225 m², Keola 135 m², foyer 113 m², salas Lumen 136 m², parquinho 36 m², voluntários 30 m², sala verde e pastoral 20 m² cada, escritórios.</p>
+  </section>
+
+  <section>
+    <h2>Resumo</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Bairro</th><th>Negócio</th><th>Preço</th><th>Área</th><th>Pé-direito</th><th>Vão livre</th><th>Nota</th></tr></thead>
+      <tbody id="resumo"></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Fichas dos imóveis</h2>
+    <div class="list" id="lista"></div>
+  </section>
+
+  <section>
+    <h2>Pistas para ligar</h2>
+    <details open>
+      <summary>Aparecem nas buscas, mas o anúncio não abriu ou está sem dados</summary>
+      <ul>
+        <li><b>Jucutuquara</b> — galpão de cerca de 2.465 m², vão livre sem colunas, pé-direito de cerca de 7,5 m. Maior que o Silver, mas é a pista mais promissora em altura.</li>
+        <li><b>Ilha de Monte Belo (perto da Faesa)</b> — galpão de 1.200 m² com pé-direito de 8 m. Sem preço nem data. <a href="https://www.centraldosgalpoes.com.br/pagina/galpoes-em-vitoria" target="_blank" rel="noopener">Central dos Galpões</a></li>
+        <li><b>Bento Ferreira</b> — galpão novo de 750 m² com pé-direito de 10 m.</li>
+        <li><b>Bento Ferreira, Av. Vitória</b> — galpão de 982 m², R$ 18.000/mês.</li>
+        <li><b>Santa Lúcia</b> — galpão de 1.200 m², venda R$ 5 milhões.</li>
+        <li><b>Horto</b> — 1.254 m² em 2 pavimentos, 6 banheiros e 6 salas. Anúncio provavelmente antigo.</li>
+        <li><b>Jardim da Penha, Rua Carijós</b> — galpão de 4.000 m², venda R$ 3,5 milhões. Muito maior que o Silver, mas barato por m². <a href="https://deztop.com/br/imovel/299873933/galpao-deposito-vitoria" target="_blank" rel="noopener">anúncio</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary>Descartados (sem salão de 450 m² ou fora do perfil)</summary>
+      <ul>
+        <li>Andorinhas — 800 m², R$ 70.000/mês, dentro de complexo de saúde.</li>
+        <li>Praia do Canto/Santa Lúcia — 900 m² em 3 pavimentos com 18 salas de drywall.</li>
+        <li>Bonfim, Av. Marechal Campos — 1.010 m², lojão de só 300 m².</li>
+        <li>Consolação, Av. Marechal Campos — 1.250 m², lojão de 236 m².</li>
+        <li>Consolação — 1.200 m² em 3 andares de escritórios.</li>
+        <li>Gurigica, Av. Leitão da Silva — 864 m², layout de prédio comercial.</li>
+        <li>Centro, ex-Itaú da Av. Jerônimo Monteiro — 1.500 m² em 3 andares + subsolo.</li>
+        <li>Centro, Av. Princesa Isabel — 1.245 m² em 2 pavimentos, sem dados de vão.</li>
+        <li>Bento Ferreira, Av. Vitória — 1.150 m² em 3 pavimentos de 380 m².</li>
+        <li>Praia do Canto — prédio novo de 1.600 m² com 15 salas, R$ 60.000.</li>
+        <li>Goiabeiras e Santa Lúcia (Rua Aleixo Netto) — prédios de escritórios de 900 m².</li>
+        <li>Centro, Condomínio Navemar — loja de 672 m² no contrapiso.</li>
+        <li>Bento Ferreira — galpão de 664 m², abaixo do mínimo.</li>
+        <li>Vila Velha, Serra e Cariacica — fora do escopo (só Vitória).</li>
+      </ul>
+    </details>
+  </section>
+
+  <p class="note">Fonte: anúncios públicos (Chaves na Mão, More Corporatti, Central dos Galpões e o agregador deztop/MGF, que republica OLX e imobiliárias). ZAP, VivaReal e Imovelweb bloquearam a leitura automática nesta rodada. "A confirmar" significa que o anúncio não traz o dado. Pé-direito e vão livre precisam ser medidos na visita antes de qualquer decisão.</p>
+</div>
+
+<div id="zoom" hidden><img alt=""></div>
+
+<script>
+const IM = [
+ {n:1,nome:"Loja de 1.000 m² na Avenida Vitória",bairro:"Bento Ferreira",neg:"Aluguel ou venda",preco:"R$ 25.000/mês · venda R$ 8,9 mi",area:"1.000 m²",pd:"7 m",vao:"A confirmar (salão único)",estr:"3 banheiros, 3 escritórios, cozinha, estacionamento para clientes. Terreno alodial.",why:"Único anúncio grande em Vitória com pé-direito declarado acima de 6 m, em avenida central, com banheiros e escritórios prontos.",nota:4,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/295319945/galpao-deposito-vitoria"]]},
+ {n:2,nome:"Galpão/lojão de 1.000 m² (expansível a 1.670 m²)",bairro:"Bento Ferreira, Av. Vitória",neg:"Aluguel",preco:"R$ 28.000/mês",area:"1.000 m² (+670 m² vizinho)",pd:"\"Alto\", sem medida",vao:"A confirmar",estr:"2 banheiros (1 PCD), escritório com sala de espera, salão de atendimento, 10 vagas internas. Fachada em blindex, portões automáticos, alarme.",why:"Pronto e de alto padrão. Somando o galpão vizinho chega a 1.670 m² e cobre o programa Silver inteiro. Falta medir o pé-direito. Pode ser vizinho ou o mesmo imóvel do item 1.",nota:4,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/301650181/galpao-deposito-5-vagas-vitoria"]]},
+ {n:3,nome:"Galpão de 1.270 m² na Rodovia Serafim Derenzi",bairro:"Santo Antônio / Santa Tereza",neg:"Aluguel ou venda",preco:"R$ 20.000/mês · venda R$ 2,5 mi",area:"1.270 m², 30 m de frente",pd:"A confirmar",vao:"A confirmar",estr:"Escritórios completos com sala de reunião, banheiros, estacionamento (5 vagas). Acesso por duas ruas.",why:"Metragem exata do Silver e o menor preço por m² da lista, com escritórios e banheiros. O pé-direito precisa ser medido.",nota:4,fotos:3,links:[["Aluguel","https://deztop.com/br/imovel/303230674/galpao-deposito-5-vagas-vitoria"],["Venda","https://deztop.com/br/imovel/303202576/galpao-deposito-5-vagas-vitoria"]]},
+ {n:4,nome:"Salão de 950 m² sem colunas + estacionamento coberto",bairro:"Ilha de Santa Maria",neg:"Aluguel",preco:"R$ 60.000/mês",area:"1.950 m² (2.100 m² total)",pd:"A confirmar",vao:"Sim, sem colunas",estr:"950 m² de frente de loja, 120 m² de escritórios e apoio, 870 m² de galpão usado como estacionamento coberto. 6 banheiros e copa.",why:"O que mais se parece com um ex-supermercado. O próprio anúncio cita igreja como uso. Proprietário aceita adequações. Perde ponto pelo aluguel alto.",nota:4,fotos:3,links:[["More Corporatti","https://morecorporatti.com.br/galpao-logistico-1950-00-m-ilha-de-santa-maria-vitoria/es"],["Agregador","https://deztop.com/br/imovel/312486388/galpao-deposito-ilha-santa-maria-vitoria-es"]]},
+ {n:5,nome:"Galpão de 684 m² com pé-direito de 9 m",bairro:"Jardim Camburi, R. Gelu Vervloet dos Santos",neg:"Aluguel",preco:"R$ 30.000/mês",area:"1.368 a 1.500 m² (galpão 684 m²)",pd:"9 m",vao:"Provável",estr:"Banheiros masculino e feminino, copa, 2 entradas, pátio pavimentado, 5 vagas.",why:"Pé-direito e galpão atendem o templo, mas há pouca área de apoio construída. O resto é pátio.",nota:3,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/280147782/galpao-deposito-5-vagas-vitoria"]]},
+ {n:6,nome:"Loja de 1.200 m² pronta para uso",bairro:"Parque Moscoso, Centro",neg:"Aluguel",preco:"R$ 30.000/mês",area:"1.200 m²",pd:"A confirmar",vao:"A confirmar",estr:"5 banheiros (1 PCD), copa, cozinha, ar-condicionado, até 20 vagas.",why:"Metragem e estacionamento no ponto certo, em área central com ônibus. Faltam pé-direito e planta.",nota:3,fotos:0,links:[["Ver anúncio","https://deztop.com/br/imovel/304167155/loja-20-vagas-vitoria"]]},
+ {n:7,nome:"Lojão de 860 m² na Av. Cezar Hilal",bairro:"Santa Lúcia",neg:"Aluguel",preco:"R$ 40.000/mês",area:"860 m²",pd:"\"Alto\", sem medida",vao:"Sim, sem divisórias",estr:"Banheiros M/F, escritório no mezanino, cozinha montada, 20 vagas. Fachada em ACM e vidro.",why:"Pronto e com vão livre, mas abaixo de 900 m², caro e sem número de pé-direito.",nota:3,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/239543907/galpao-deposito-5-vagas-vitoria"]]},
+ {n:8,nome:"Galpão de 800 m² com telhado novo",bairro:"Santa Lúcia, R. Gil Martins de Oliveira",neg:"Aluguel",preco:"R$ 29.000/mês",area:"799 m²",pd:"A confirmar",vao:"A confirmar",estr:"4 escritórios, 6 vagas, desnível no fundo que permite ampliar. Telhado novo (fev/2023).",why:"A 700 m da Praia do Canto e o anúncio cita igrejas, mas é pequeno para o programa completo.",nota:3,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/299559012/galpao-deposito-5-vagas-vitoria"]]},
+ {n:9,nome:"Galpão de 1.295 m² + mezanino de 380 m²",bairro:"Ilha de Santa Maria, R. Pedro Carlos de Souza",neg:"Aluguel",preco:"R$ 21.000/mês",area:"1.295 m² + 380 m²",pd:"A confirmar",vao:"A confirmar",estr:"4 banheiros, recepção, diretoria com banheiro, salas, copa, vestiário. Adequações permitidas.",why:"Bom preço e apoio pronto, mas a descrição fala em só 392 m² de armazenamento, o que pode deixar o salão pequeno.",nota:3,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/278724930/galpao-deposito-vitoria"]]},
+ {n:10,nome:"Prédio de 1.379 m² na Av. Marechal Campos",bairro:"De Lourdes",neg:"Aluguel",preco:"R$ 25.000/mês",area:"1.379 m²",pd:"A confirmar",vao:"A confirmar",estr:"Térreo de 618 m² com sobreloja + 2 andares de 270 m². Banheiros em todos os andares, 17 vagas.",why:"Andares servem para as salas de apoio, mas o térreo com sobreloja dificilmente terá 6 m livres em 450 m².",nota:2,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/295318006/galpao-deposito-5-vagas-vitoria"]]},
+ {n:11,nome:"Ex-escola de 1.000 m² com quadra",bairro:"República, R. Zely de Paula",neg:"Aluguel",preco:"R$ 8.500/mês",area:"1.000 m² em 3 pavimentos",pd:"A confirmar",vao:"Só a quadra, com obra",estr:"7 salas, biblioteca, 6 banheiros, último andar aberto.",why:"Muito barato e já tem salas e banheiros, mas o templo depende de cobrir ou reformar a quadra.",nota:2,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/266646056/apartamento-vitoria"]]},
+ {n:12,nome:"Ex-agência Santander em leilão",bairro:"Centro, Av. Princesa Isabel, 571",neg:"Venda (leilão)",preco:"R$ 6.224.000",area:"1.661 m² construídos",pd:"A confirmar",vao:"A confirmar",estr:"Térreo e pavimento superior, 19 vagas externas. Desocupado, vendido no estado.",why:"Ótimo estacionamento, mas uma agência de dois pavimentos raramente tem 450 m² com 6 m livres.",nota:2,fotos:3,links:[["Ver anúncio","https://deztop.com/br/imovel/296128052/galpao-deposito-19-vagas-vitoria"]]}
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cls=v=>/^A confirmar|sem medida/.test(v)?"pend":/^Sim|^\d/.test(v)?"yes":"";
+document.getElementById("resumo").innerHTML=IM.map(i=>`<tr><td>${i.n}</td><td>${esc(i.bairro)}${i.novo?`<span class="novo">Novo</span>`:""}</td><td>${esc(i.neg)}</td><td>${esc(i.preco)}</td><td>${esc(i.area)}</td><td class="${cls(i.pd)}">${esc(i.pd)}</td><td class="${cls(i.vao)}">${esc(i.vao)}</td><td><a href="#imovel-${i.n}">${i.nota}/5</a></td></tr>`).join("");
+document.getElementById("lista").innerHTML=IM.map(i=>{
+  const g=i.fotos?["a","b","c"].map((s,k)=>`<img src="fotos/${i.n}${s}.jpg" alt="${esc(i.nome)}, foto ${k+1}" loading="lazy" tabindex="0">`).join(""):`<div class="nofoto">Anúncio sem foto disponível</div>`;
+  return `<article class="item${i.nota>=4?" top":""}" id="imovel-${i.n}">
+  <div class="gal">${g}</div>
+  <div class="info">
+    <div class="head"><div><div class="loc">${i.n}. ${esc(i.bairro)}${i.novo?`<span class="novo">Novo · ${esc(i.novo)}</span>`:""}</div><h3>${esc(i.nome)}</h3></div><span class="nota n${i.nota}">${i.nota}/5</span></div>
+    <dl class="facts">
+      <div><dt>Negócio</dt><dd>${esc(i.neg)}</dd></div>
+      <div><dt>Preço</dt><dd>${esc(i.preco)}</dd></div>
+      <div><dt>Área</dt><dd>${esc(i.area)}</dd></div>
+      <div><dt>Pé-direito</dt><dd class="${cls(i.pd)}">${esc(i.pd)}</dd></div>
+      <div><dt>Vão livre</dt><dd class="${cls(i.vao)}">${esc(i.vao)}</dd></div>
+    </dl>
+    <p class="small">${esc(i.estr)}</p>
+    <p class="why">${esc(i.why)}</p>
+    <div class="links">${i.links.map((l,k)=>`<a class="btn${k?" alt":""}" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join("")}</div>
+  </div></article>`}).join("");
+const z=document.getElementById("zoom"),zi=z.querySelector("img");
+document.addEventListener("click",e=>{if(e.target.matches(".gal img")){zi.src=e.target.src;zi.alt=e.target.alt;z.hidden=false}else if(!z.hidden&&z.contains(e.target))z.hidden=true});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")z.hidden=true;if(e.key==="Enter"&&e.target.matches(".gal img"))e.target.click()});
+</script>
+</html>
